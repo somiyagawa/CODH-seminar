@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>言語類型地図の概要</title>
+    <style>
+        :root {
+            --primary-color: #2c6eb6;
+            --secondary-color: #5094e4;
+            --accent-color: #ffb74d;
+            --text-color: #333333;
+            --text-light: #ffffff;
+            --background-color: #e6f3ff; /* 薄い水色に変更 */
+            --slide-bg: #ffffff; /* ボックスは白色のまま */
+            --highlight-bg: #fff8e1;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+        
+        .slides-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .slide {
+            display: none;
+            background-color: var(--slide-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        .slide-header {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 0.3em;
+        }
+        
+        h2 {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            margin-bottom: 0.5em;
+        }
+        
+        h3 {
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+        }
+        
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .map-container {
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .map-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .example-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .example-table th, 
+        .example-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .example-table th {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .example-table tr:nth-child(even) {
+            background-color: rgba(242, 242, 242, 0.5);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            position: sticky;
+            bottom: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .counter {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            .slide {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slides-container">
+        <div class="counter" id="counter">スライド 1/20</div>
+        
+        <!-- スライド1: タイトル -->
+        <div class="slide active" id="slide1">
+            <div class="slide-header">
+                <h1>言語類型地図の概要</h1>
+                <h2>言語類型論的特徴の地理的可視化</h2>
+            </div>
+            <p>言語類型論と地理言語学の交差点における最新の研究動向</p>
+            <div class="map-container">
+                <img src="/api/placeholder/1000/500" alt="世界の言語分布の例">
+            </div>
+        </div>
+
+        <!-- スライド2: 言語類型論とは -->
+        <div class="slide" id="slide2">
+            <div class="slide-header">
+                <h1>言語類型論とは</h1>
+            </div>
+            <p>言語類型論（言語類型学、Linguistic Typology）は、世界の言語の構造的な<span class="highlight">類似点と相違点</span>を体系的に研究する言語学の分野です。</p>
+            
+            <div class="two-column">
+                <div>
+                    <h3>言語類型論の特徴</h3>
+                    <ul>
+                        <li><span class="highlight">記述的アプローチ</span>：個別の言語を詳細に記述</li>
+                        <li><span class="highlight">比較的アプローチ</span>：言語間の共通性と差異を分析</li>
+                        <li><span class="highlight">系統に依存しない分析</span>：言語系統よりも構造特徴に注目</li>
+                        <li><span class="highlight">普遍性の探求</span>：言語の普遍的パターンを特定</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>主な研究テーマ</h3>
+                    <ul>
+                        <li>言語の構造パラメータの特定と分類</li>
+                        <li>言語特徴の分布パターンの解析</li>
+                        <li>言語の普遍的制約の発見</li>
+                        <li>言語特徴間の含意関係の分析</li>
+                        <li>言語変化の類型論的パターンの研究</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド3: 言語類型論の位置づけ -->
+        <div class="slide" id="slide3">
+            <div class="slide-header">
+                <h1>言語類型論の位置づけ</h1>
+            </div>
+            <div class="map-container">
+                <img src="/api/placeholder/900/450" alt="言語類型論と関連分野の関係図">
+            </div>
+            <p>言語類型論は比較言語学、記述言語学、理論言語学、社会言語学などと相互に関連し、言語学全体に多大な貢献をしています。主な特徴として:</p>
+            <ul>
+                <li><span class="highlight">系統論との違い</span>：言語の歴史的関係ではなく、構造的特徴の類似性に注目</li>
+                <li><span class="highlight">理論言語学との関係</span>：経験的データに基づいて言語理論の妥当性を検証</li>
+                <li><span class="highlight">認知言語学との接点</span>：言語構造と人間の認知能力の関係性を探究</li>
+            </ul>
+        </div>
+
+        <!-- スライド4: 言語類型地図とは -->
+        <div class="slide" id="slide4">
+            <div class="slide-header">
+                <h1>言語類型地図とは</h1>
+            </div>
+            <p>言語類型地図（Language Typology Maps）は、言語の構造的特徴の<span class="highlight">地理的分布を視覚化</span>するツールです。</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>目的</h3>
+                    <p>言語の構造特徴と地理的分布の関係性を明らかにし、言語の接触、変化、拡散のパターンを理解する</p>
+                </div>
+                <div class="feature-item">
+                    <h3>対象</h3>
+                    <p>音韻論、形態論、統語論、意味論などの言語特徴</p>
+                </div>
+                <div class="feature-item">
+                    <h3>方法</h3>
+                    <p>特定の言語特徴を地図上にプロットし、地域的パターンを特定</p>
+                </div>
+                <div class="feature-item">
+                    <h3>成果</h3>
+                    <p>言語接触地域（Sprachbund）の特定、言語変化の経路復元など</p>
+                </div>
+            </div>
+            
+            <p>言語類型地図は<span class="highlight">定性的分析と定量的分析</span>を組み合わせた研究手法であり、言語学者が言語の多様性と普遍性を理解するための重要なツールです。</p>
+        </div>
+
+        <!-- スライド5: 言語類型地図の歴史 -->
+        <div class="slide" id="slide5">
+            <div class="slide-header">
+                <h1>言語類型地図の歴史的発展</h1>
+            </div>
+            
+            <div class="two-column">
+                <div>
+                    <h3>初期の発展</h3>
+                    <ul>
+                        <li><span class="highlight">19世紀末〜20世紀初頭</span>: 方言地図の出現
+                            <ul>
+                                <li>Jules Gilliéron: フランス言語地図 (1902-1910)</li>
+                                <li>Georg Wenker: ドイツ言語地図 (1888-)</li>
+                            </ul>
+                        </li>
+                        <li><span class="highlight">1950年代</span>: Joseph Greenbergによる言語類型論の体系化</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>現代的発展</h3>
+                    <ul>
+                        <li><span class="highlight">1980年代</span>: WALSプロジェクトの構想</li>
+                        <li><span class="highlight">2005年</span>: WALSの初版出版（Max Planck研究所）</li>
+                        <li><span class="highlight">2008年〜現在</span>: WALSオンライン版の展開</li>
+                        <li><span class="highlight">2010年代〜</span>: コンピュータ技術の導入と大規模データベース化</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/300" alt="言語類型地図研究の歴史的発展図">
+            </div>
+        </div>
+
+        <!-- スライド6: 日本における方言地図 -->
+        <div class="slide" id="slide6">
+            <div class="slide-header">
+                <h1>日本における方言地図と言語地理学</h1>
+            </div>
+            
+            <p>日本は方言研究と言語地理学において豊かな伝統を持っています。</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>日本言語地図（LAJ）</h3>
+                    <p><span class="highlight">1957年〜1974年</span>に国立国語研究所によって実施された大規模調査。全国約2,400地点の方言を300項目調査し、全6巻の地図集として刊行。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>方言文法全国地図（GAJ）</h3>
+                    <p><span class="highlight">1989年〜2006年</span>に刊行された、文法現象に焦点を当てた初の全国規模の言語地図。助詞・活用形・敬語などの文法項目を全国807地点で調査。</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/400" alt="日本の方言区画地図の例">
+            </div>
+        </div>
+
+        <!-- スライド7: 日本の方言地図研究の特徴 -->
+        <div class="slide" id="slide7">
+            <div class="slide-header">
+                <h1>日本の方言地図研究の特徴</h1>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>LAJDB・GAJDB</h3>
+                    <p>日本言語地図と方言文法全国地図のデータベース化プロジェクト。現在はオンラインで検索・閲覧可能。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>地方言語地図</h3>
+                    <p>各地域・県単位の詳細な方言地図（東北方言地図、沖縄語辞典付属言語地図など）。</p>
+                </div>
+            </div>
+            
+            <p>日本の方言地図研究は、<span class="highlight">方言の連続性</span>と<span class="highlight">境界線（等語線）</span>の調査に重点を置き、方言区画論や言語変化の研究に大きく貢献しています。</p>
+            
+            <p>現代では計算言語学的手法を取り入れた<span class="highlight">方言コーパス</span>の構築と分析も進んでいます。例えば、国立国語研究所の「日本の消滅危機言語・方言の記録とドキュメンテーションの作成」プロジェクトや「方言コーパス」の構築などが挙げられます。</p>
+        </div>
+
+        <!-- スライド8: 主要な言語類型地図 -->
+        <div class="slide" id="slide8">
+            <div class="slide-header">
+                <h1>主要な言語類型地図プロジェクト (1)</h1>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>WALS <span class="highlight">(World Atlas of Language Structures)</span></h3>
+                    <p>2,679言語、192の言語特徴を網羅する最大規模のデータベース。オンラインで無料公開され、インタラクティブな地図作成が可能。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>SAILS <span class="highlight">(South American Indigenous Language Structures)</span></h3>
+                    <p>南米先住民言語に特化した類型論的特徴の地図。固有の文化的・歴史的文脈を考慮した設計。</p>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/400" alt="WALSのインターフェース例">
+            </div>
+        </div>
+
+        <!-- スライド9: その他の主要プロジェクト -->
+        <div class="slide" id="slide9">
+            <div class="slide-header">
+                <h1>主要な言語類型地図プロジェクト (2)</h1>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>APiCS <span class="highlight">(Atlas of Pidgin and Creole Language Structures)</span></h3>
+                    <p>ピジン・クレオール言語76言語の構造的特徴を130項目にわたって収集したデータベース。言語接触研究の重要資料。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>GramBank</h3>
+                    <p>2,467言語の文法特徴を収集した比較言語学データベース。特に形態統語論的特徴に焦点。</p>
+                </div>
+            </div>
+            
+            <p>これらのプロジェクトは<span class="highlight">オープンアクセス化</span>と<span class="highlight">デジタル技術の活用</span>により、言語類型論研究の民主化と高度化に貢献しています。</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>AUTOTYP</h3>
+                    <p>言語特徴の地理的・系統的分布を研究するためのデータベース。特に形態統語論的特徴に焦点。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>ASJP <span class="highlight">(Automated Similarity Judgment Program)</span></h3>
+                    <p>7,000以上の言語・方言の語彙リストを比較し、系統関係を推定するプロジェクト。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド10: 音韻論的特徴 -->
+        <div class="slide" id="slide10">
+            <div class="slide-header">
+                <h1>言語類型地図の主な特徴カテゴリ (1)</h1>
+                <h2>音韻論的特徴</h2>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>子音体系</h3>
+                    <ul>
+                        <li>子音目録のサイズ（小・中・大）</li>
+                        <li>特殊な子音（喉頭化音、反り舌音など）</li>
+                        <li>子音クラスターの複雑さ</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>母音体系</h3>
+                    <ul>
+                        <li>母音目録のサイズと質</li>
+                        <li>長短対立、緊張-弛緩対立</li>
+                        <li>鼻母音の有無</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>超分節的特徴</h3>
+                    <ul>
+                        <li>声調システムの種類</li>
+                        <li>アクセントパターン（強勢・ピッチ）</li>
+                        <li>イントネーションシステム</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>音韻プロセス</h3>
+                    <ul>
+                        <li>母音調和</li>
+                        <li>子音同化現象</li>
+                        <li>音節構造の制約</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/350" alt="世界の子音目録サイズの分布">
+            </div>
+        </div>
+
+        <!-- スライド11: 形態論的特徴 -->
+        <div class="slide" id="slide11">
+            <div class="slide-header">
+                <h1>言語類型地図の主な特徴カテゴリ (2)</h1>
+                <h2>形態論的特徴</h2>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>形態論的類型</h3>
+                    <ul>
+                        <li>孤立語（中国語など）</li>
+                        <li>膠着語（日本語、トルコ語など）</li>
+                        <li>屈折語（ラテン語、アラビア語など）</li>
+                        <li>複統合語（グリーンランド語など）</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>名詞の形態論</h3>
+                    <ul>
+                        <li>格標示システム</li>
+                        <li>複数形成</li>
+                        <li>名詞クラス/性</li>
+                        <li>所有標示</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>動詞の形態論</h3>
+                    <ul>
+                        <li>時制・相・法のマーキング</li>
+                        <li>一致標示</li>
+                        <li>態（ヴォイス）の形態論</li>
+                        <li>証拠性標示</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>形態的プロセス</h3>
+                    <ul>
+                        <li>接辞添加（接頭辞、接尾辞）</li>
+                        <li>重複</li>
+                        <li>内部屈折（アラビア語など）</li>
+                        <li>抱合（エスキモー語など）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド12: 統語論的特徴 -->
+        <div class="slide" id="slide12">
+            <div class="slide-header">
+                <h1>言語類型地図の主な特徴カテゴリ (3)</h1>
+                <h2>統語論的特徴</h2>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>語順パターン</h3>
+                    <ul>
+                        <li>主要部と補部の順序</li>
+                        <li>基本語順（SOV, SVO等）</li>
+                        <li>修飾語と被修飾語の順序</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>格配列</h3>
+                    <ul>
+                        <li>対格型</li>
+                        <li>能格型</li>
+                        <li>活格型</li>
+                        <li>中立型</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>複文構造</h3>
+                    <ul>
+                        <li>関係節の形成</li>
+                        <li>補文化</li>
+                        <li>副詞節</li>
+                        <li>連続構文</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>その他の構文</h3>
+                    <ul>
+                        <li>否定表現</li>
+                        <li>疑問文の形成</li>
+                        <li>焦点化・話題化</li>
+                        <li>受動構文と態変換</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- スライド13: 意味論的特徴 -->
+        <div class="slide" id="slide13">
+            <div class="slide-header">
+                <h1>言語類型地図の主な特徴カテゴリ (4)</h1>
+                <h2>意味論的特徴</h2>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>時間表現</h3>
+                    <ul>
+                        <li>時制体系</li>
+                        <li>相（アスペクト）の区別</li>
+                        <li>絶対時制 vs. 相対時制</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>空間表現</h3>
+                    <ul>
+                        <li>空間指示語の体系</li>
+                        <li>前置詞/後置詞の意味領域</li>
+                        <li>絶対座標系 vs. 相対座標系</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>語彙領域</h3>
+                    <ul>
+                        <li>色彩語彙</li>
+                        <li>親族用語体系</li>
+                        <li>数詞システム</li>
+                        <li>身体部位の命名</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>文法化された意味</h3>
+                    <ul>
+                        <li>証拠性（情報源）</li>
+                        <li>話法（ムード）</li>
+                        <li>定性・特定性</li>
+                        <li>敬意表現</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p><span class="highlight">特徴間の相関関係</span>は言語類型論の中心的な研究テーマであり、言語類型地図はこれらの相関を地理的文脈で理解するのに役立ちます。</p>
+        </div>
+
+        <!-- スライド14: 語順類型の例 -->
+        </div>
+
+        <!-- スライド15: 名詞クラス（文法性）の分布 -->
+        <div class="slide" id="slide15">
+            <div class="slide-header">
+                <h1>文法性・名詞クラスシステムの分布</h1>
+            </div>
+            
+            <p>名詞クラス（文法性）システムは言語類型論で特に注目される特徴で、その地理的分布には明確なパターンが見られます。</p>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>類型パターン</h3>
+                    <ul>
+                        <li><span class="highlight">性別システム</span>：男性・女性（・中性）によるクラス分け</li>
+                        <li><span class="highlight">意味的システム</span>：有生/無生、人間/非人間などの意味による分類</li>
+                        <li><span class="highlight">形式的システム</span>：音韻的特徴による分類</li>
+                        <li><span class="highlight">複雑なクラスシステム</span>：バントゥー諸語のような多数のクラス</li>
+                        <li><span class="highlight">クラスなし</span>：文法的な名詞分類を持たない言語</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>地域的特徴</h3>
+                    <ul>
+                        <li>インド＝ヨーロッパ語族：2〜3クラスの性別システムが一般的</li>
+                        <li>アフリカ（特にバントゥー語圏）：複雑な名詞クラスシステム</li>
+                        <li>東アジア：文法的な名詞クラスを持たない言語が多数</li>
+                        <li>オーストラリア：複雑な意味的クラスシステム</li>
+                        <li>北米先住民言語：多様な名詞分類システムが存在</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/400" alt="世界の名詞クラス分布地図">
+            </div>
+        </div>
+
+        <!-- スライド16: 言語類型地図の作成方法 -->
+        <div class="slide" id="slide16">
+            <div class="slide-header">
+                <h1>言語類型地図の作成方法</h1>
+            </div>
+            
+            <ol>
+                <li><span class="highlight">データ収集</span>: 文法記述、フィールドワーク、既存の研究からデータを収集</li>
+                <li><span class="highlight">分類と符号化</span>: 言語特徴を体系的に分類し、データベースに符号化</li>
+                <li><span class="highlight">地理座標の割り当て</span>: 各言語に地理的座標（緯度・経度）を割り当て</li>
+                <li><span class="highlight">視覚化</span>: GISソフトウェアを用いて特徴の分布を地図上に表示</li>
+                <li><span class="highlight">パターン分析</span>: 分布パターンを統計的手法で分析</li>
+                <li><span class="highlight">解釈</span>: 歴史的・社会的・地理的文脈を考慮して分布を解釈</li>
+            </ol>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/350" alt="言語類型地図作成のワークフロー">
+            </div>
+            
+            <p>近年では、<span class="highlight">機械学習</span>や<span class="highlight">ベイズ統計</span>などの計算的手法を用いて、より精緻な分析や欠損データの予測なども行われています。また、<span class="highlight">インタラクティブな可視化</span>技術により、ウェブ上で動的に地図を操作することも可能になっています。</p>
+        </div>
+
+        <!-- スライド17: 言語類型地図の応用 -->
+        <div class="slide" id="slide17">
+            <div class="slide-header">
+                <h1>言語類型地図の応用</h1>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>言語学的応用</h3>
+                    <ul>
+                        <li><span class="highlight">言語接触の研究</span>: 言語特徴の拡散と借用のパターンを特定</li>
+                        <li><span class="highlight">言語史の再構築</span>: 言語変化の歴史的経路を推測</li>
+                        <li><span class="highlight">言語普遍性の検証</span>: 普遍的な言語特徴と地域的特徴の区別</li>
+                        <li><span class="highlight">言語系統の研究</span>: 系統分類と類型論的類似性の関係を分析</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>学際的応用</h3>
+                    <ul>
+                        <li><span class="highlight">言語多様性の保全</span>: 言語多様性のホットスポットを特定し保全活動に貢献</li>
+                        <li><span class="highlight">計算言語学</span>: 言語モデルの改善と多言語NLPシステムの開発</li>
+                        <li><span class="highlight">認知科学</span>: 言語構造と認知プロセスの関係解明</li>
+                        <li><span class="highlight">人類学・考古学</span>: 人口移動や文化拡散のパターン推定</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p>言語類型地図は、<span class="highlight">言語の多様性</span>と<span class="highlight">その背後にある規則性</span>の両方を理解する上で重要なツールであり、人間言語の本質に関する洞察を提供します。</p>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/300" alt="言語類型地図の応用例">
+            </div>
+        </div>
+
+        <!-- スライド18: 計算言語学と言語類型地図 -->
+        <div class="slide" id="slide18">
+            <div class="slide-header">
+                <h1>計算言語学と言語類型地図</h1>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>計算手法</h3>
+                    <ul>
+                        <li><span class="highlight">自動特徴抽出</span>: 機械学習を用いた言語コーパスからの特徴抽出</li>
+                        <li><span class="highlight">予測モデリング</span>: 未記録の言語特徴を予測するベイズモデル</li>
+                        <li><span class="highlight">系統言語学的手法</span>: 言語特徴の進化を系統樹でモデル化</li>
+                        <li><span class="highlight">空間統計学</span>: 言語特徴の地理的分布パターンの定量分析</li>
+                    </ul>
+                </div>
+                <div class="feature-item">
+                    <h3>技術的展開</h3>
+                    <ul>
+                        <li><span class="highlight">インタラクティブツール</span>: ウェブベースの対話型言語地図</li>
+                        <li><span class="highlight">クロスリンギスティックNLP</span>: 類型論的知識を活用した多言語処理</li>
+                        <li><span class="highlight">大規模データベース</span>: クラウドソーシングによるデータ収集と検証</li>
+                        <li><span class="highlight">3D/4D可視化</span>: 時間次元を含めた動的言語地図の開発</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p>計算言語学的アプローチにより、従来の人手による分析では見えなかった<span class="highlight">複雑なパターン</span>や<span class="highlight">相関関係</span>を発見することが可能になっています。</p>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/300" alt="計算言語学的手法による言語類型地図">
+            </div>
+        </div>
+
+        <!-- スライド19: 課題と展望 -->
+        <div class="slide" id="slide19">
+            <div class="slide-header">
+                <h1>課題と展望</h1>
+            </div>
+            
+            <div class="two-column">
+                <div>
+                    <h3>現在の課題</h3>
+                    <ul>
+                        <li><span class="highlight">サンプリングバイアス</span>: 欧米の研究で記録された言語に偏り</li>
+                        <li><span class="highlight">データの粒度と比較可能性</span>: 言語記述の質と詳細さの差異</li>
+                        <li><span class="highlight">消滅危機言語のデータ不足</span>: 世界の言語多様性の一部しか記録されていない</li>
+                        <li><span class="highlight">多次元的特徴の表現</span>: 2次元マップでの複雑な特徴の表現の限界</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>今後の展望</h3>
+                    <ul>
+                        <li><span class="highlight">大規模言語データとAI</span>: ディープラーニングを活用した分析手法の発展</li>
+                        <li><span class="highlight">多次元可視化技術</span>: VR/ARを用いた新しい視覚化アプローチ</li>
+                        <li><span class="highlight">市民科学</span>: 非専門家も参加できる言語データ収集プラットフォームの構築</li>
+                        <li><span class="highlight">言語復興・保全</span>: 消滅危機言語の記録と復興への応用</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <p>言語類型地図研究は、<span class="highlight">テクノロジーの発展</span>と<span class="highlight">学際的アプローチ</span>により、新たな段階に入りつつあります。言語の多様性と普遍性の理解を深めるだけでなく、言語の保全や復興にも貢献することが期待されています。</p>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/250" alt="言語類型地図研究の将来展望">
+            </div>
+        </div>
+
+        <!-- スライド20: まとめと参考文献 -->
+        <div class="slide" id="slide20">
+            <div class="slide-header">
+                <h1>まとめと参考文献</h1>
+            </div>
+            
+            <h3>主要なポイント</h3>
+            <ul>
+                <li>言語類型地図は言語の構造的特徴の地理的分布を視覚化する強力なツール</li>
+                <li>WALSをはじめとする大規模プロジェクトにより研究が発展</li>
+                <li>日本にも豊かな方言地図の伝統がある（LAJ、GAJなど）</li>
+                <li>音韻論、形態論、統語論、意味論にわたる様々な特徴を地図化可能</li>
+                <li>言語接触、言語変化、言語系統研究に重要な知見を提供</li>
+                <li>計算言語学との融合により新たな研究手法が開発中</li>
+            </ul>
+            
+            <h3>主要参考文献</h3>
+            <ul>
+                <li>Dryer, M. S., & Haspelmath, M. (Eds.). (2013). <span class="highlight">The World Atlas of Language Structures Online</span>. Leipzig: Max Planck Institute for Evolutionary Anthropology.</li>
+                <li>Nichols, J. (1992). <span class="highlight">Linguistic Diversity in Space and Time</span>. Chicago: University of Chicago Press.</li>
+                <li>Croft, W. (2003). <span class="highlight">Typology and Universals</span> (2nd ed.). Cambridge: Cambridge University Press.</li>
+                <li>大西拓一郎 (編) (2016). <span class="highlight">新日本言語地図</span>. 朝倉書店.</li>
+                <li>Bickel, B. (2015). <span class="highlight">Distributional typology</span>: statistical inquiries into the dynamics of linguistic diversity. In B. Heine & H. Narrog (Eds.), <i>The Oxford Handbook of Linguistic Analysis</i> (2nd ed., pp. 901-923). Oxford University Press.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="controls">
+        <button id="prevBtn" disabled>前へ</button>
+        <button id="nextBtn">次へ</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const counter = document.getElementById('counter');
+            let currentSlide = 0;
+            
+            // 最初のスライドのみ表示する
+            slides[0].classList.add('active');
+            
+            function updateSlide() {
+                // 全てのスライドを非表示にする
+                slides.forEach(slide => slide.classList.remove('active'));
+                // 現在のスライドを表示する
+                slides[currentSlide].classList.add('active');
+                
+                // ボタンの有効/無効状態を更新
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === slides.length - 1;
+                
+                // カウンターを更新
+                counter.textContent = `スライド ${currentSlide + 1}/${slides.length}`;
+                
+                // スクロールを先頭に戻す
+                window.scrollTo(0, 0);
+            }
+            
+            // 「前へ」ボタンのクリックイベント
+            prevBtn.addEventListener('click', function() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+            
+            // 「次へ」ボタンのクリックイベント
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            });
+            
+            // キーボードでのナビゲーション
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+                    currentSlide++;
+                    updateSlide();
+                } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+            
+            // 初期状態を設定
+            updateSlide();
+        });
+    </script>
+</body>
+</html>
+        <div class="slide" id="slide14">
+            <div class="slide-header">
+                <h1>語順類型の地理的分布</h1>
+            </div>
+            
+            <p>世界の言語の基本語順分布は、言語類型地図の最も顕著な成功例の一つです。</p>
+            
+            <table class="example-table">
+                <thead>
+                    <tr>
+                        <th>語順型</th>
+                        <th>特徴</th>
+                        <th>代表的言語</th>
+                        <th>地域的分布</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="highlight">SOV</span></td>
+                        <td>主語-目的語-動詞</td>
+                        <td>日本語、トルコ語、ペルシア語</td>
+                        <td>アジア、オセアニア、南米の一部</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">SVO</span></td>
+                        <td>主語-動詞-目的語</td>
+                        <td>英語、中国語、スワヒリ語</td>
+                        <td>ヨーロッパ、アフリカ、東南アジア</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">VSO</span></td>
+                        <td>動詞-主語-目的語</td>
+                        <td>アラビア語、アイルランド語、ハワイ語</td>
+                        <td>中東、ケルト語圏、ポリネシア</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">VOS</span></td>
+                        <td>動詞-目的語-主語</td>
+                        <td>マダガスカル語、ツォツィル語</td>
+                        <td>マダガスカル、中米の一部</td>
+                    </tr>
+                    <tr>
+                        <td><span class="highlight">OVS/OSV</span></td>
+                        <td>目的語が先行</td>
+                        <td>ヒシカリアナ語、ワオラニ語</td>
+                        <td>アマゾン流域（稀）</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="map-container">
+                <img src="/api/placeholder/900/400" alt="世界の語順分布地図">
+            </div>
+            
+            <p>この分布は<span class="highlight">言語接触</span>と<span class="highlight">歴史的拡散</span>のパターンを示唆しており、ユーラシア大陸の東西で異なる語順優勢地域があることが分かります。
