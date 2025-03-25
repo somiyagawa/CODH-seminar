@@ -130,16 +130,13 @@
             text-align: left;
             border-bottom: 1px solid #e0e0e0;
         }
-        
         .example-table th {
             background-color: var(--primary-color);
             color: var(--text-light);
         }
-        
         .example-table tr:nth-child(even) {
             background-color: rgba(242, 242, 242, 0.5);
         }
-        
         .controls {
             display: flex;
             justify-content: center;
@@ -153,7 +150,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             z-index: 100;
         }
-        
         .counter {
             text-align: center;
             margin-bottom: 10px;
@@ -171,29 +167,23 @@
             font-size: 13px;
             font-weight: bold;
         }
-        
         button:hover {
             background-color: var(--secondary-color);
         }
-        
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
-        
         @media (max-width: 768px) {
             .two-column {
                 grid-template-columns: 1fr;
             }
-            
             h1 {
                 font-size: 2.0em;
             }
-            
             h2 {
                 font-size: 1.8em;
             }
-            
             .slide {
                 padding: 20px;
             }
@@ -203,7 +193,6 @@
 <body>
     <div class="slides-container">
         <div class="counter" id="counter">スライド 1/20</div>
-        
         <!-- スライド1: タイトル -->
         <div class="slide active" id="slide1">
             <div class="slide-header">
@@ -211,9 +200,11 @@
                 <h2><ruby> 宮川 <rp>(</rp><rt>みやがわ</rt><rp>)</rp> </ruby><ruby> 創 <rp>(</rp><rt>そう</rt><rp>)</rp> </ruby></h2>
                 <h3>筑波大学人文社会系准教授、国立国語研究所客員准教授</h3>
             </div>
-            <p>世界の母語話者がいる言語の分布図（2022年、Ethnologue）</p>
-            <iframe width="100%" height="500" frameborder="0" src="https://silintl.cartodb.com/viz/852e178e-e26e-11e5-88b4-0e674067d321/embed_map" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" detectretina=""></iframe>
-          
+            <p>
+                世界の母語話者がいる言語の分布図（2022年、Ethnologue）
+            </p>
+            <iframe width="100%" height="500" frameborder="0" src="https://silintl.cartodb.com/viz/852e178e-e26e-11e5-88b4-0e674067d321/embed_map" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" detectretina="">
+            </iframe>
         </div>
 
         <!-- スライド2: 言語類型論とは -->
@@ -221,8 +212,9 @@
             <div class="slide-header">
                 <h1>言語類型論とは</h1>
             </div>
-            <p>言語類型論（言語類型学、Linguistic Typology）は、世界の言語の構造的な<span class="highlight">類似点と相違点</span>を体系的に研究する言語学の分野。</p>
-            
+            <p>
+                言語類型論（言語類型学、Linguistic Typology）は、世界の言語の構造的な<span class="highlight">類似点と相違点</span>を体系的に研究する言語学の分野である。
+            </p>
             <div class="two-column">
                 <div>
                     <h3>言語類型論の特徴</h3>
@@ -254,7 +246,7 @@
             <div class="map-container">
                 <img src="/api/placeholder/900/450" alt="言語類型論と関連分野の関係図">
             </div>
-            <p>言語類型論は比較言語学、記述言語学、理論言語学、社会言語学などと相互に関連し、言語学全体に多大な貢献。主な特徴として:</p>
+            <p>言語類型論は比較言語学、記述言語学、理論言語学、社会言語学などと相互に関連し、言語学全体に多大な貢献をしている。主な特徴として:</p>
             <ul>
                 <li><span class="highlight">系統論との違い</span>：言語の歴史的関係ではなく、構造的特徴の類似性に注目</li>
                 <li><span class="highlight">理論言語学との関係</span>：経験的データに基づいて言語理論の妥当性を検証</li>
@@ -268,7 +260,6 @@
                 <h1>言語類型地図とは</h1>
             </div>
             <p>言語類型地図（Linguistic Typological Atlas）は、言語の構造的特徴の<span class="highlight">地理的分布を視覚化</span>したもの。</p>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>目的</h3>
@@ -287,8 +278,7 @@
                     <p>言語連合（Sprachbund）の特定、言語変化の経路復元など</p>
                 </div>
             </div>
-            
-            <p>言語類型地図は<span class="highlight">定性的分析と定量的分析</span>を組み合わせた研究手法であり、言語学者が言語の多様性と普遍性を理解するための重要なツールです。</p>
+            <p>言語類型地図は<span class="highlight">定性的分析と定量的分析</span>を組み合わせた研究手法であり、言語学者が言語の多様性と普遍性を理解するための重要なツールである。</p>
         </div>
 
         <!-- スライド5: 言語類型地図の歴史 -->
@@ -296,7 +286,6 @@
             <div class="slide-header">
                 <h1>言語類型地図の歴史的発展</h1>
             </div>
-            
             <div class="two-column">
                 <div>
                     <h3>初期の発展</h3>
@@ -320,7 +309,6 @@
                     </ul>
                 </div>
             </div>
-            
             <div class="map-container">
                 <img src="/api/placeholder/900/300" alt="言語類型地図研究の歴史的発展図">
             </div>
@@ -331,9 +319,9 @@
             <div class="slide-header">
                 <h1>日本における方言地図と言語地理学</h1>
             </div>
-            
-            <p>日本は方言研究と言語地理学において豊かな伝統を持っています。</p>
-            
+            <p>
+                日本は方言研究と言語地理学において豊かな伝統を持っています。
+            </p>
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>日本言語地図（LAJ）</h3>
@@ -344,7 +332,6 @@
                     <p><span class="highlight">1989年〜2006年</span>に刊行された、文法現象に焦点を当てた初の全国規模の言語地図。助詞・活用形・敬語などの文法項目を全国807地点で調査。</p>
                 </div>
             </div>
-            
             <div class="map-container">
                 <img src="/api/placeholder/900/400" alt="日本の方言区画地図の例">
             </div>
@@ -355,24 +342,20 @@
             <div class="slide-header">
                 <h1>日本の方言地図研究の特徴</h1>
             </div>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>LAJDB・GAJDB</h3>
                     <p>日本言語地図と方言文法全国地図のデータベース化プロジェクト。現在はオンラインで検索・閲覧可能。</p>
                 </div>
-              <iframe
-  id="inlineFrameExample"
-  title="Inline Frame Example"
-  width=100%
-  height="500"
-  src="https://www.lajdb.org/TOP.html">
-</iframe>
+                <iframe id="inlineFrameExample" title="Inline Frame Example" width=150% height="500" src="https://www.lajdb.org/TOP.html">
+                </iframe>
             </div>
-            
-            <p>日本の方言地図研究は、<span class="highlight">方言の連続性</span>と<span class="highlight">境界線（等語線）</span>の調査に重点を置き、方言区画論や言語変化の研究に大きく貢献しています。</p>
-            
-            <p>現代では計算言語学的手法を取り入れた<span class="highlight">方言コーパス</span>の構築と分析も進んでいます。例えば、国立国語研究所の「日本の消滅危機言語・方言の記録とドキュメンテーションの作成」プロジェクトや「方言コーパス」の構築などが挙げられます。</p>
+            <p>
+                日本の方言地図研究は、<span class="highlight">方言の連続性</span>と<span class="highlight">境界線（等語線）</span>の調査に重点を置き、方言区画論や言語変化の研究に大きく貢献しています。
+            </p>
+            <p>
+                現代では計算言語学的手法を取り入れた<span class="highlight">方言コーパス</span>の構築と分析も進んでいます。例えば、国立国語研究所の「日本の消滅危機言語・方言の記録とドキュメンテーションの作成」プロジェクトや「方言コーパス」の構築などが挙げられます。
+            </p>
         </div>
 
         <!-- スライド8: 主要な言語類型地図 -->
@@ -380,10 +363,12 @@
             <div class="slide-header">
                 <h1>主要な言語類型地図プロジェクト (1)</h1>
             </div>
-            
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h3><a href="https://wals.info/" target="_blank">WALS</a> <span class="highlight">(World Atlas of Language Structures)</span></h3>
+                    <h3>
+                        <a href="https://wals.info/" target="_blank">WALS</a>
+                        <span class="highlight">(World Atlas of Language Structures)</span>
+                    </h3>
                     <p>2,679言語、192の言語特徴を網羅する最大規模のデータベース。オンラインで無料公開され、インタラクティブな地図作成が可能。</p>
                 </div>
                 <div class="feature-item">
@@ -391,7 +376,6 @@
                     <p>南米先住民言語に特化した類型論的特徴の地図。固有の文化的・歴史的文脈を考慮した設計。</p>
                 </div>
             </div>
-            
             <div class="map-container">
                 <img src="/api/placeholder/900/400" alt="WALSのインターフェース例">
             </div>
@@ -402,7 +386,6 @@
             <div class="slide-header">
                 <h1>主要な言語類型地図プロジェクト (2)</h1>
             </div>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3><a href="https://apics-online.info/about" target="_blank">APiCS</a><span class="highlight">(Atlas of Pidgin and Creole Language Structures)</span></h3>
@@ -413,9 +396,7 @@
                     <p>2,467言語の文法特徴を収集した比較言語学データベース。特に形態統語論的特徴に焦点。</p>
                 </div>
             </div>
-            
             <p>これらのプロジェクトは<span class="highlight">オープンアクセス化</span>と<span class="highlight">デジタル技術の活用</span>により、言語類型論研究の民主化と高度化に貢献しています。</p>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>AUTOTYP</h3>
@@ -469,19 +450,15 @@
                     </ul>
                 </div>
             </div>
-
-                        <iframe width="100%" height="1000" frameborder="0" src="            https://wals.info/feature/1A#2/19.3/152.9
-" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" detectretina=""></iframe>
-
+            <iframe width="100%" height="1000" frameborder="0" src="https://wals.info/feature/1A#2/19.3/152.9" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" detectretina="">
+            </iframe>
         </div>
-
         <!-- スライド11: 形態論的特徴 -->
         <div class="slide" id="slide11">
             <div class="slide-header">
                 <h1>言語類型地図の主な特徴カテゴリ (2)</h1>
                 <h2>形態論的特徴</h2>
             </div>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>形態論的類型</h3>
@@ -521,15 +498,12 @@
                 </div>
             </div>
         </div>
-
-         <!-- スライド15: 名詞クラス（文法性）の分布 -->
-         <div class="slide" id="slide15">
+        <!-- スライド15: 名詞クラス（文法性）の分布 -->
+        <div class="slide" id="slide15">
             <div class="slide-header">
                 <h1>文法性・名詞クラスシステムの分布</h1>
             </div>
-            
             <p>名詞クラス（文法性）システムは言語類型論で特に注目される特徴で、その地理的分布には明確なパターンが見られます。</p>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>類型パターン</h3>
@@ -552,12 +526,9 @@
                     </ul>
                 </div>
             </div>
-                        <div class="map-container">
-
-                      <iframe width="100%" height="1000" frameborder="0" src="            https://wals.info/feature/30A#2/26.7/149.1
-" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" detectretina=""></iframe>
-     </div>
-       
+            <div class="map-container">
+                <iframe width="100%" height="1000" frameborder="0" src="https://wals.info/feature/30A#2/26.7/149.1" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" detectretina=""></iframe>
+            </div>
         </div>
 
         <!-- スライド12: 統語論的特徴 -->
@@ -566,7 +537,6 @@
                 <h1>言語類型地図の主な特徴カテゴリ (3)</h1>
                 <h2>統語論的特徴</h2>
             </div>
-            
             <div class="feature-grid">
                 <div class="feature-item">
                     <h3>語順パターン</h3>
@@ -715,7 +685,7 @@
         <!-- スライド16: 使役交替言語地図 -->
         <div class="slide" id="slide16">
             <div class="slide-header">
-                <h1>使役交替言語地図（WATP）</h1>
+                <h1><a href="https://watp.ninjal.ac.jp/" target="_blank">使役交替言語地図</a>（WATP）</h1>
             </div>
             
             <div class="two-column">
